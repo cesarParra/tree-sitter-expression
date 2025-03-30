@@ -1,0 +1,12 @@
+=========
+Literals
+=========
+
+1
+
+---
+
+(source_file
+  (expression
+    (primary_expression
+      (number))))

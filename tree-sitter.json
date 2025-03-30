@@ -1,0 +1,41 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+  "grammars": [
+    {
+      "name": "expression",
+      "camelcase": "Expression",
+      "title": "Expression",
+      "scope": "source.expression",
+      "file-types": [
+        "expression"
+      ],
+      "injection-regex": "^expression$",
+      "class-name": "TreeSitterExpression"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Expression language for Salesforce projects",
+    "authors": [
+      {
+        "name": "Cesar Parra",
+        "email": "cesar.parra@gmail.com",
+        "url": "https://cesarparra.github.io/blog/"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/cesarParra/expression",
+      "funding": "https://github.com/sponsors/cesarParra"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true,
+    "zig": false
+  }
+}
