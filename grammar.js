@@ -108,15 +108,16 @@ module.exports = grammar({
 
     number: ($) => choice($._integer, $._double),
 
-    _integer: ($) => /\d+/,
+    _integer: ($) => token(/\d+/),
 
-    _double: ($) => /\d+\.\d+/,
+    _double: ($) => token(/\d+\.\d+/),
 
-    boolean: ($) => choice(caseInsensitive("true"), caseInsensitive("false")),
+    boolean: ($) =>
+      token(choice(caseInsensitive("true"), caseInsensitive("false"))),
 
     comment: ($) => token("#"),
 
-    null: ($) => caseInsensitive("null"),
+    null: ($) => token(caseInsensitive("null")),
 
     _list_literal: ($) => choice($.expression, seq($.addif, $.expression)),
 
@@ -137,7 +138,7 @@ module.exports = grammar({
 
     key_value: ($) => seq($.expression, ":", $.expression),
 
-    identifier: ($) => /[a-zA-Z_][a-zA-Z0-9_]*/,
+    identifier: ($) => token(/[a-zA-Z_][a-zA-Z0-9_]*/),
   },
 });
 
