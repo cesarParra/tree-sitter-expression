@@ -12,6 +12,19 @@ Number Literal
       (number))))
 
 =========
+Double Literal
+=========
+
+1.0
+
+---
+
+(source_file
+  (expression
+    (primary_expression
+      (number))))
+
+=========
 False Keyword
 =========
 
@@ -75,3 +88,31 @@ String Literal With Template
   (expression
     (primary_expression
       (string_literal))))
+
+=========
+Custom Variables
+=========
+
+$hello
+
+---
+
+(source_file
+  (expression
+    (primary_expression
+      (variable
+        (identifier)))))
+
+=========
+Context Variables
+=========
+
+@hello
+
+---
+
+(source_file
+  (expression
+    (primary_expression
+      (variable
+        (identifier)))))

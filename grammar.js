@@ -76,23 +76,32 @@ module.exports = grammar({
     // Primary Expressions
 
     primary_expression: ($) =>
-      choice($._literal, $.identifier, $.string_literal),
+      choice($._literal, $.string_literal, $.variable, $.identifier),
+
+    string_literal: ($) => seq('"', repeat(choice($._string_content)), '"'),
+
+    _string_content: ($) => token(prec(1, /[^"$][^"]*/)),
+
+    // A custom variable is any identifier that starts with a $
+    // While a context variable is any identifier that starts with a @
+
+    variable: ($) => choice(seq("$", $.identifier), seq("@", $.identifier)),
 
     // Literals
 
     _literal: ($) => choice($.number, $.boolean, $.null),
 
-    number: ($) => /\d+/,
+    number: ($) => choice($._integer, $._double),
+
+    _integer: ($) => /\d+/,
+
+    _double: ($) => /\d+\.\d+/,
 
     boolean: ($) => choice(caseInsensitive("true"), caseInsensitive("false")),
 
     comment: ($) => token("#"),
 
     null: ($) => caseInsensitive("null"),
-
-    string_literal: ($) => seq('"', repeat(choice($._string_content)), '"'),
-
-    _string_content: ($) => token(prec(1, /[^"$][^"]*/)),
 
     identifier: ($) => /[a-zA-Z_][a-zA-Z0-9_]*/,
   },
