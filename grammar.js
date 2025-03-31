@@ -24,6 +24,7 @@ const PREC = {
   COMPARISON: 4,
   TERM: 5,
   FACTOR: 6,
+  CALL: 7,
 };
 
 module.exports = grammar({
@@ -76,7 +77,14 @@ module.exports = grammar({
     // Primary Expressions
 
     primary_expression: ($) =>
-      choice($._literal, $.string_literal, $.variable, $.identifier),
+      choice(
+        $._literal,
+        $.string_literal,
+        $.variable,
+        $.function_call,
+        $.grouped_expression,
+        $.identifier,
+      ),
 
     string_literal: ($) => seq('"', repeat(choice($._string_content)), '"'),
 
@@ -86,6 +94,13 @@ module.exports = grammar({
     // While a context variable is any identifier that starts with a @
 
     variable: ($) => choice(seq("$", $.identifier), seq("@", $.identifier)),
+
+    function_call: ($) =>
+      prec(PREC.CALL, seq($.identifier, "(", optional($.argument_list), ")")),
+
+    argument_list: ($) => seq($.expression, repeat(seq(",", $.expression))),
+
+    grouped_expression: ($) => seq("(", $.expression, ")"),
 
     // Literals
 

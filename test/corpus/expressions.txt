@@ -116,3 +116,54 @@ Context Variables
     (primary_expression
       (variable
         (identifier)))))
+
+=========
+Function Call
+=========
+
+hello()
+
+---
+
+(source_file
+  (expression
+    (primary_expression
+      (function_call
+        (identifier)))))
+
+=========
+Function call with arguments
+=========
+
+hello(1, 2)
+
+---
+
+(source_file
+  (expression
+    (primary_expression
+      (function_call
+        (identifier)
+        (argument_list
+          (expression
+            (primary_expression
+              (number)))
+          (expression
+            (primary_expression
+              (number))))))))
+
+=========
+Grouped Expression
+=========
+
+(1)
+
+---
+
+(source_file
+  (expression
+    (primary_expression
+      (grouped_expression
+        (expression
+          (primary_expression
+            (number)))))))
