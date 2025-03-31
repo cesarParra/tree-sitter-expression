@@ -167,3 +167,42 @@ Grouped Expression
         (expression
           (primary_expression
             (number)))))))
+
+=========
+List Literal
+=========
+
+[1, 2]
+
+---
+
+(source_file
+  (expression
+    (primary_expression
+      (list
+        (expression
+          (primary_expression
+            (number)))
+        (expression
+          (primary_expression
+            (number)))))))
+
+=========
+Map Literal
+=========
+
+{a: 1}
+
+---
+
+(source_file
+  (expression
+    (primary_expression
+      (map
+        (key_value
+          (expression
+            (primary_expression
+                  (identifier)))
+          (expression
+            (primary_expression
+              (number))))))))

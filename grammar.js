@@ -104,7 +104,7 @@ module.exports = grammar({
 
     // Literals
 
-    _literal: ($) => choice($.number, $.boolean, $.null),
+    _literal: ($) => choice($.number, $.boolean, $.null, $.list, $.map),
 
     number: ($) => choice($._integer, $._double),
 
@@ -118,9 +118,29 @@ module.exports = grammar({
 
     null: ($) => caseInsensitive("null"),
 
+    _list_literal: ($) => choice($.expression, seq($.addif, $.expression)),
+
+    addif: ($) => seq("addif", "(", $.expression, ")"),
+
+    list: ($) =>
+      seq(
+        "[",
+        optional($._list_literal),
+        repeat(seq(",", $._list_literal)),
+        "]",
+      ),
+
+    map: ($) =>
+      seq("{", optional($._map_literal), repeat(seq(",", $._map_literal)), "}"),
+
+    _map_literal: ($) => choice($.key_value, seq($.addif, $.key_value)),
+
+    key_value: ($) => seq($.expression, ":", $.expression),
+
     identifier: ($) => /[a-zA-Z_][a-zA-Z0-9_]*/,
   },
 });
 
 // TODO: Queries
 // TODO: String templates
+// TODO: Anonymous functions
