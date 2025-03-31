@@ -31,7 +31,7 @@ module.exports = grammar({
 
   extras: ($) => [/\s/, $.comment],
 
-  // word: ($) => $.identifier,
+  word: ($) => $.identifier,
 
   rules: {
     source_file: ($) => repeat($.expression),
@@ -75,20 +75,28 @@ module.exports = grammar({
 
     // Primary Expressions
 
-    primary_expression: ($) => choice($._literal, $.identifier),
+    primary_expression: ($) =>
+      choice($._literal, $.identifier, $.string_literal),
 
     // Literals
 
-    _literal: ($) => choice($.number, $.boolean),
+    _literal: ($) => choice($.number, $.boolean, $.null),
 
     number: ($) => /\d+/,
 
-    // Choice between true and false (case insensitive)
     boolean: ($) => choice(caseInsensitive("true"), caseInsensitive("false")),
 
-    // Comments are always one line starting with a #
     comment: ($) => token("#"),
+
+    null: ($) => caseInsensitive("null"),
+
+    string_literal: ($) => seq('"', repeat(choice($._string_content)), '"'),
+
+    _string_content: ($) => token(prec(1, /[^"$][^"]*/)),
 
     identifier: ($) => /[a-zA-Z_][a-zA-Z0-9_]*/,
   },
 });
+
+// TODO: Queries
+// TODO: String templates

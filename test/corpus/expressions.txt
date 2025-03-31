@@ -36,3 +36,42 @@ true
   (expression
     (primary_expression
       (boolean))))
+
+=========
+Null Keyword
+=========
+
+null
+
+---
+
+(source_file
+  (expression
+    (primary_expression
+      (null))))
+
+=========
+String Literal
+=========
+
+"hello"
+
+---
+
+(source_file
+  (expression
+    (primary_expression
+      (string_literal))))
+
+=========
+String Literal With Template
+=========
+
+"hello ${name}"
+
+---
+
+(source_file
+  (expression
+    (primary_expression
+      (string_literal))))
