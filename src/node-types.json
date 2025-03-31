@@ -18,6 +18,10 @@
         "required": true,
         "types": [
           {
+            "type": "&&",
+            "named": false
+          },
+          {
             "type": "||",
             "named": false
           }
@@ -34,6 +38,11 @@
         ]
       }
     }
+  },
+  {
+    "type": "boolean",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "expression",
@@ -105,6 +114,10 @@
       "required": true,
       "types": [
         {
+          "type": "boolean",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -130,6 +143,10 @@
         }
       ]
     }
+  },
+  {
+    "type": "&&",
+    "named": false
   },
   {
     "type": "(",

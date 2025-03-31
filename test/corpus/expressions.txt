@@ -1,5 +1,5 @@
 =========
-Literals
+Number Literal
 =========
 
 1
@@ -10,3 +10,29 @@ Literals
   (expression
     (primary_expression
       (number))))
+
+=========
+False Keyword
+=========
+
+false
+
+---
+
+(source_file
+  (expression
+    (primary_expression
+      (boolean))))
+
+=========
+True Keyword
+=========
+
+true
+
+---
+
+(source_file
+  (expression
+    (primary_expression
+      (boolean))))
