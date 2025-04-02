@@ -61,6 +61,10 @@ module.exports = grammar({
         ...[
           ["||", PREC.OR],
           ["&&", PREC.AND],
+          ["!=", PREC.EQUALITY],
+          ["=", PREC.EQUALITY],
+          ["==", PREC.EQUALITY],
+          ["<>", PREC.EQUALITY],
         ].map(([operator, precedence]) =>
           prec.left(
             precedence,

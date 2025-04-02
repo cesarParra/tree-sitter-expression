@@ -206,3 +206,111 @@ Map Literal
           (expression
             (primary_expression
               (number))))))))
+
+=========
+Or expression
+=========
+
+1 || 2
+
+---
+
+(source_file
+  (expression
+    (binary_expression
+      (expression
+        (primary_expression
+          (number)))
+      (expression
+        (primary_expression
+          (number))))))
+
+=========
+And expression
+=========
+
+1 && 2
+
+---
+
+(source_file
+  (expression
+    (binary_expression
+      (expression
+        (primary_expression
+          (number)))
+      (expression
+        (primary_expression
+          (number))))))
+
+=========
+Not Equal
+=========
+
+1 != 2
+
+---
+
+(source_file
+  (expression
+    (binary_expression
+      (expression
+        (primary_expression
+          (number)))
+      (expression
+        (primary_expression
+          (number))))))
+
+=========
+Equal (one equals sign)
+=========
+
+1 = 2
+
+---
+
+(source_file
+  (expression
+    (binary_expression
+      (expression
+        (primary_expression
+          (number)))
+      (expression
+        (primary_expression
+          (number))))))
+
+=========
+Equal (two equals signs)
+=========
+
+1 == 2
+
+---
+
+(source_file
+  (expression
+    (binary_expression
+      (expression
+        (primary_expression
+          (number)))
+      (expression
+        (primary_expression
+          (number))))))
+
+=========
+Not Equal (<>)
+=========
+
+1 <> 2
+
+---
+
+(source_file
+  (expression
+    (binary_expression
+      (expression
+        (primary_expression
+          (number)))
+      (expression
+        (primary_expression
+          (number))))))
